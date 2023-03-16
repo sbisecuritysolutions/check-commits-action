@@ -1,0 +1,24 @@
+name: 'Check Commit Messages'
+
+description: GitHub Action which looks for a pattern in commit messages between two commits
+
+inputs:
+  base_commit:
+    description: Base commit id or ref
+    default: "origin/${{ github.base_ref }}"
+  head_commit:
+    description: Head commit id or ref
+    default: "origin/${{ github.head_ref }}"
+  regex_filter:
+    description: Regex filter to look for in commit messages (Perl syntax)
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: '"${{ github.action_path }}/check_commits.sh" "$BASE_COMMIT" "$HEAD_COMMIT" "$REGEX_FILTER"'
+      shell: bash
+      env:
+        BASE_COMMIT: ${{ inputs.base_commit }}
+        HEAD_COMMIT: ${{ inputs.head_commit }}
+        REGEX_FILTER: ${{ inputs.regex_filter }}
