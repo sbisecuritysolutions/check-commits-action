@@ -30,7 +30,7 @@ temporary commits from being merged.
               fetch-depth: 0
 
           - name: Check Commits
-            uses: giner/check-commits@v1.0.0
+            uses: giner/check-commits@358edf572b8aa3644621f3761b531603d91df0a3  # v1.0.0
             with:
               regex_filter: '\[(squash|wip|tmp)\]'  # Stop on commits marked with [squash], [wip] or [tmp]
 
