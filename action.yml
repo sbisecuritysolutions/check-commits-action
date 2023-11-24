@@ -16,7 +16,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: '"${{ github.action_path }}/check_commits.sh" "$BASE_COMMIT" "$HEAD_COMMIT" "$REGEX_FILTER"'
+    - run: '"$GITHUB_ACTION_PATH/check_commits.sh" "$BASE_COMMIT" "$HEAD_COMMIT" "$REGEX_FILTER"'
       shell: bash
       env:
         BASE_COMMIT: ${{ inputs.base_commit }}
